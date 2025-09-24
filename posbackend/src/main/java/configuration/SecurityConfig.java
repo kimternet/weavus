@@ -56,7 +56,7 @@ public class SecurityConfig {
 				cfg.setAllowedHeaders(Collections.singletonList("*"));
 				cfg.setExposedHeaders(Arrays.asList("Authorization"));
 				cfg.setMaxAge(3600L);
-				return cfg;
+				return cfg; //
 			}
 		};
 	}
