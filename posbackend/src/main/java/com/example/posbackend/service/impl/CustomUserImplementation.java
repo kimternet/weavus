@@ -1,5 +1,4 @@
-package service.impl;
-
+package com.example.posbackend.service.impl;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -12,10 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import modal.User;
-import repository.UserRepository;
+import com.example.posbackend.modal.User;
+import com.example.posbackend.repository.UserRepository;
 
 @Service
+
 public class CustomUserImplementation implements UserDetailsService {
 	
 	

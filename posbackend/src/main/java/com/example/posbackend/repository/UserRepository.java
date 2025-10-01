@@ -1,8 +1,8 @@
-package repository;
+package com.example.posbackend.repository;
 
+import com.example.posbackend.modal.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import modal.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	

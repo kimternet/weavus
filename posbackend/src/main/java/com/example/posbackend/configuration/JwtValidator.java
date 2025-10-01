@@ -1,4 +1,5 @@
-package configuration;
+package com.example.posbackend.configuration;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParser;
-import io.jsonwebtoken.JwtParserBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
@@ -33,41 +32,34 @@ public class JwtValidator extends OncePerRequestFilter {
 		
 		String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 		
-		if(jwt != null) {
-			jwt= jwt.substring(7);
+		if (jwt != null && jwt.startsWith("Bearer ")) {   // ✅ 접두사 확인
+			jwt = jwt.substring(7); // "Bearer " 잘라내기
 			
 			try {
 				SecretKey key = Keys.hmacShaKeyFor(JwtConstant.JWT_SECRET.getBytes());
-				Claims claims = Jwts.parser() //JwtParserBuilder
+				
+				Claims claims = Jwts.parser()
 						.verifyWith(key)
-						.build() //JwtParser
-						.parseSignedClaims(jwt) //Jws<Claims>
+						.build()
+						.parseSignedClaims(jwt)
 						.getPayload();
 				
 				String email = String.valueOf(claims.get("email"));
 				String authorities = String.valueOf(claims.get("authorities"));
 				
-				
-				List<GrantedAuthority> auths= AuthorityUtils.commaSeparatedStringToAuthorityList(
-						authorities
-				);
+				List<GrantedAuthority> auths =
+						AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
 				
 				Authentication auth = new UsernamePasswordAuthenticationToken(
 						email, null, auths);
-				SecurityContextHolder.getContext().setAuthentication(
-						auth
-				);
+				
+				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 			catch(Exception e) {
-				throw new BadCredentialsException("Invalid JWT..."); //
+				throw new BadCredentialsException("Invalid JWT: " + e.getMessage());
 			}
 		}
 		
 		filterChain.doFilter(request, response);
 	}
 }
-
-			
-			
-			
-			

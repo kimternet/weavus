@@ -1,4 +1,4 @@
-package domain;
+package com.example.posbackend.domain;
 
 public enum UserRole {
 	
