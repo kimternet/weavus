@@ -19,17 +19,21 @@ import com.example.posbackend.mapper.UserMapper;
 import com.example.posbackend.modal.User;
 import com.example.posbackend.payload.dto.UserDto;
 import com.example.posbackend.payload.response.AuthResponse;
+import com.example.posbackend.repository.UserRepository;
+import com.example.posbackend.service.AuthService;
+import com.example.posbackend.configuration.JwtProvider;
+
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements com.example.posbackend.service.AuthService{
+public class AuthServiceImpl implements AuthService{
 	
 	
-	private final com.example.posbackend.repository.UserRepository userRepository;
+	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
-	private final com.example.posbackend.configuration.JwtProvider jwtprovider;
+	private final JwtProvider jwtprovider;
 	private final CustomUserImplementation customUserImplementation;
 	
 	
@@ -37,10 +41,10 @@ public class AuthServiceImpl implements com.example.posbackend.service.AuthServi
 	public AuthResponse signup(UserDto userDto) throws UserException {
 		User user = userRepository.findByEmail(userDto.getEmail());
 		if (user != null) {
-			throw new com.example.posbackend.exceptions.UserException("email id already registered !");
+			throw new UserException("email id already registered !");
 		}
 		if(userDto.getRole().equals(UserRole.ROLE_ADMIN)) {
-			throw new com.example.posbackend.exceptions.UserException("role admin is not allowed!");
+			throw new UserException("role admin is not allowed!");
 		}
 		
 		User newUser =new User();
@@ -75,7 +79,7 @@ public class AuthServiceImpl implements com.example.posbackend.service.AuthServi
 	}
 
 	@Override
-	public com.example.posbackend.payload.response.AuthResponse login(UserDto userDto) throws com.example.posbackend.exceptions.UserException {
+	public AuthResponse login(UserDto userDto) throws UserException {
 		String email = userDto.getEmail();
 		String password = userDto.getPassword();
 		Authentication authentication = authenticate(email,password);
@@ -93,10 +97,10 @@ public class AuthServiceImpl implements com.example.posbackend.service.AuthServi
 		user.setLastLogin(LocalDateTime.now());
 		userRepository.save(user);
 		
-		AuthResponse authResponse = new com.example.posbackend.payload.response.AuthResponse();
+		AuthResponse authResponse = new AuthResponse();
 		authResponse.setJwt(jwt);
 		authResponse.setMessage("Login Successfully");
-		authResponse.setUser(com.example.posbackend.mapper.UserMapper.toDTO(user));
+		authResponse.setUser(UserMapper.toDTO(user));
 		
 		
 		return authResponse;
@@ -107,16 +111,16 @@ public class AuthServiceImpl implements com.example.posbackend.service.AuthServi
 		UserDetails userDetails = customUserImplementation.loadUserByUsername(email);
 		
 		if(userDetails == null) {
-			throw new com.example.posbackend.exceptions.UserException("email id doesn't exist"+email);
+			throw new UserException("email id doesn't exist"+email);
 		}
 		
 		if(!passwordEncoder.matches(password, userDetails.getPassword())) {
-			throw new com.example.posbackend.exceptions.UserException("password doesn't match");
+			throw new UserException("password doesn't match");
 		}
 		
 		
 		
-		return new UsernamePasswordAuthenticationToken(null, userDetails.getAuthorities());
+		return new UsernamePasswordAuthenticationToken(userDetails, password,userDetails.getAuthorities());
 	}
 	
 	
