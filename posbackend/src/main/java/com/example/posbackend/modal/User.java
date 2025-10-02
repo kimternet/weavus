@@ -2,7 +2,6 @@ package com.example.posbackend.modal;
 
 import java.time.LocalDateTime;
 
-import domain.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
