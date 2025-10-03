@@ -2,6 +2,7 @@ package com.example.posbackend.payload.dto;
 
 import java.time.LocalDateTime;
 
+import com.example.posbackend.modal.Category;
 import com.example.posbackend.modal.Store;
 
 import jakarta.persistence.Column;
@@ -35,7 +36,7 @@ public class ProductDTO {
 	
 	private String image;
 	
-	//private Category category;
+	private CategoryDTO category;
 	
 	private Long categoryId;
 	

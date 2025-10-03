@@ -8,10 +8,12 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import com.example.posbackend.mapper.ProductMapper;
+import com.example.posbackend.modal.Category;
 import com.example.posbackend.modal.Product;
 import com.example.posbackend.modal.Store;
 import com.example.posbackend.modal.User;
 import com.example.posbackend.payload.dto.ProductDTO;
+import com.example.posbackend.repository.CategoryRepository;
 import com.example.posbackend.repository.ProductRepository;
 import com.example.posbackend.repository.StoreRepository;
 import com.example.posbackend.service.ProductService;
@@ -30,6 +32,7 @@ public class ProductServiceImpl implements ProductService{
 	
 	private final ProductRepository productRepository;
 	private final StoreRepository storeRepository;
+	private final CategoryRepository categoryRepository;
 	
 	
 	@Override
@@ -40,7 +43,14 @@ public class ProductServiceImpl implements ProductService{
 				() -> new Exception("Store not found")
 				
 		);
-		Product product= ProductMapper.toEntity(productDTO, store);
+		
+		Category category= categoryRepository.findById(productDTO.getCategoryId()).orElseThrow(
+		
+				()-> new Exception("Category not found")
+				
+		);
+		
+		Product product= ProductMapper.toEntity(productDTO, store, category);
 		Product savedProduct = productRepository.save(product);
 		
 		return ProductMapper.toDTO(savedProduct);
@@ -52,6 +62,7 @@ public class ProductServiceImpl implements ProductService{
 				() -> new Exception("product not found")			
 				
 		);
+
 		
 		product.setName(productDTO.getName());
 		product.setDescription(productDTO.getDescription());
@@ -61,6 +72,17 @@ public class ProductServiceImpl implements ProductService{
 		product.setSellingPrice(product.getSellingPrice());
 		product.setBrand(product.getBrand());
 		product.setUpdatedAt(LocalDateTime.now());
+		
+		
+		if(productDTO.getCategoryId()!=null) {
+			Category category = categoryRepository.findById(productDTO.getCategoryId()).orElseThrow(
+				
+			()-> new Exception("category not found")
+		
+			);
+			product.setCategory(category);
+		}
+		
 		
 		Product savedProduct = productRepository.save(product);
 		
