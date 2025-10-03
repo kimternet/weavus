@@ -2,6 +2,7 @@ package com.example.posbackend.service;
 
 import java.util.List;
 
+import com.example.posbackend.domain.StoreStatus;
 import com.example.posbackend.exceptions.UserException;
 import com.example.posbackend.modal.Store;
 import com.example.posbackend.modal.User;
@@ -13,8 +14,10 @@ public interface StoreService {
 	StoreDTO getStoreById(Long id) throws Exception;
 	List<StoreDTO> getAllStores();
 	Store getStoreByAdmin() throws UserException;
-	StoreDTO updateStore(Long id, StoreDTO storeDTO);
-	StoreDTO deleteStore(Long id);
-	StoreDTO getStoreByEmployee() throws UserException;	
+	StoreDTO updateStore(Long id, StoreDTO storeDTO) throws UserException, Exception;
+	void deleteStore(Long id) throws UserException;
+	StoreDTO getStoreByEmployee() throws UserException;
+	
+	StoreDTO moderateStore(Long id, StoreStatus status) throws Exception;
 
 }

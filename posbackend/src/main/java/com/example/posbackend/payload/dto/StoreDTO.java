@@ -15,6 +15,7 @@ import jakarta.persistence.PrePersist;
 import lombok.Data;
 
 
+
 @Data
 public class StoreDTO {
 	
@@ -39,4 +40,4 @@ public class StoreDTO {
 	
 	}
 
-}
+
