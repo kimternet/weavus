@@ -14,6 +14,7 @@ const CreateOrder = () => {
                 <CartSection />
                 <CustomerPaymentSection />
             </div>
+
         </div>
     )
 }
