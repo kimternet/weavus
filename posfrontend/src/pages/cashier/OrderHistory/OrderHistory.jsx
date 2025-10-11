@@ -9,24 +9,25 @@ import { useState } from 'react'
 const OrderHistory = () => {
 
     const [showOrderInvoiceDialog, setShowOrderInvoiceDialog] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+
+    const handleViewOrderDetails = (order) => { setSelectedOrder(order), setShowOrderInvoiceDialog(true) }
 
     return (
         <div className="h-full flex flex-col">
 
             <div className="flex-1 p-4 overflow-auto">
-
-                <OrderTable setShowOrderInvoiceDialog={setShowOrderInvoiceDialog} />
-
+                <OrderTable handleViewOrderDetails={handleViewOrderDetails} />
             </div>
 
             <Dialog open={showOrderInvoiceDialog} onOpenChange={setShowOrderInvoiceDialog}>
-                <DialogContent className="max-w-3xl">
+                <DialogContent className="max-w-4xl">
                     <DialogHeader>
                         <DialogTitle>
                             Order - Invoice
                         </DialogTitle>
                     </DialogHeader>
-                    <OrderDetails />
+                    <OrderDetails selectedOrder={selectedOrder} />
 
                     <DialogFooter>
 
