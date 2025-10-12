@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router'
 import './App.css'
 import CreateOrder from "./pages/cashier/CreateOrder"
 import CustomerLookup from './pages/cashier/CustomerManagement/CustomerLookup'
@@ -10,7 +11,12 @@ function App() {
   return (
     <>
 
-      <CashierRoutes />
+      <Routes>
+
+        <Route path="/cashier/*" element={<CashierRoutes />} />
+      </Routes>
+
+
 
     </>
   )

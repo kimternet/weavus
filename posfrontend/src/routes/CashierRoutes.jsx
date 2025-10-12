@@ -10,14 +10,19 @@ import { Route, Routes } from 'react-router'
 const CashierRoutes = () => {
     return (
         <Routes>
-            <Route path='/' element={<CreateOrder />} />
-            <Route path='/orders' element={<OrderHistory />} />
-            <Route path='/customers' element={<CustomerLookup />} />
-            <Route path='/returns' element={<RefundPage />} />
-            <Route path='/shift-summary' element={<ShiftSummaryPage />} />
-
+            <Route path='/'
+                element={
+                    <CashierDashboardLayout />
+                }
+            >
+                <Route index element={<CreateOrder />} />
+                <Route path='orders' element={<OrderHistory />} />
+                <Route path='customers' element={<CustomerLookup />} />
+                <Route path='returns' element={<RefundPage />} />
+                <Route path='shift-summary' element={<ShiftSummaryPage />} />
+            </Route>
         </Routes>
-    )
-}
+    );
+};
 
-export default CashierRoutes
+export default CashierRoutes;
