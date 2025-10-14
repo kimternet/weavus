@@ -31,6 +31,11 @@ const navItems = [
         icon: <CreditCard className="w-5 h-5" />,
     },
     {
+        name: "Inventory",
+        path: "/branch/inventory",
+        icon: <CreditCard className="w-5 h-5" />,
+    },
+    {
         name: "Employees",
         path: "/branch/employees",
         icon: <Users className="w-5 h-5" />,

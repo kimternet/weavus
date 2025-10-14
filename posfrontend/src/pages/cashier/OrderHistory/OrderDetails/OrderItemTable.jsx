@@ -22,7 +22,7 @@ const OrderItemTable = ({ selectedOrder }) => {
                             <TableRow key={item.id}>
                                 <TableCell>
                                     <div className="w-10 h-10">
-                                        {item.product?.image && <img src={item.product?.image} className="w-10 h-10 object-cover rounded-md" />}
+                                        {item.product?.image && (<img src={item.product?.image} className="w-10 h-10 object-cover rounded-md" />)}
                                     </div>
                                 </TableCell>
                                 <TableCell>
