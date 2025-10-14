@@ -10,7 +10,9 @@ const OrderDetailsSection = ({ handleSelectOrder, selectedOrder }) => {
     return (
         <div className="w-1/2 border-r p-4">
             <div className="mb-4">
-                <Button onClick={() => handleSelectOrder(null)}><ChevronLeftIcon />back to order table</Button>
+                <Button onClick={() => handleSelectOrder(null)}>
+                    <ChevronLeftIcon />back to order table
+                </Button>
             </div>
             <Card>
                 <CardContent>
@@ -45,7 +47,6 @@ const OrderDetailsSection = ({ handleSelectOrder, selectedOrder }) => {
                 </CardContent>
             </Card>
             <div className="flex-1 overflow-auto mt-5">
-
                 <h2 className="text-xl font-semibold mb-4">オーダー商品</h2>
                 <Table>
                     <TableHeader>
