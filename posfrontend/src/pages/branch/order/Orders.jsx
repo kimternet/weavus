@@ -33,7 +33,7 @@ const orders = [
             }
         ]
     }
-]
+];
 
 const Orders = () => {
     const [showOrderInvoiceDialog, setShowOrderInvoiceDialog] = useState(false);
