@@ -4,28 +4,25 @@ import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
 
 const COLORS = ["#6D214F", "#B33771", "#D980FA", "#833471", "#84817a"];
-const TopProducts = () => {
+
+
+const PaymentMethodChart = () => {
 
     const data = [
         {
-            name: "味噌ラーメン",
+            name: "UPI",
             value: 34,
             percentage: 40
         },
         {
-            name: "塩ラーメン",
+            name: "CASH",
             value: 10,
             percentage: 15
         },
         {
-            name: "つけ麵",
+            name: "CARD",
             value: 24,
             percentage: 20
-        },
-        {
-            name: "普通ラーメン",
-            value: 54,
-            percentage: 50
         },
     ]
 
@@ -60,7 +57,7 @@ const TopProducts = () => {
         <Card>
             <CardHeader>
                 <CardTitle className={"text-xl font-semibold"}>
-                    Product Performance
+                    Payment Method
                 </CardTitle>
             </CardHeader>
 
@@ -80,7 +77,8 @@ const TopProducts = () => {
                                     <ChartTooltipContent
                                         active={active}
                                         payload={payload}
-                                        formatter={(value) => [`$${value ?? "-"}`, "Sales"]}
+                                        formatter={(value) => [`$${value ??
+                                            "-"}%`, "Sales"]}
                                     />
                                 )}
                             />
@@ -91,7 +89,7 @@ const TopProducts = () => {
 
             </CardContent>
         </Card>
-    )
-}
+    );
+};
 
-export default TopProducts
+export default PaymentMethodChart;
