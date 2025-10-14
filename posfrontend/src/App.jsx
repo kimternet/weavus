@@ -8,6 +8,8 @@ import ShiftSummaryPage from './pages/cashier/ShiftReport/ShiftSummaryPage'
 import CashierRoutes from './routes/CashierRoutes'
 import BranchLayout from './pages/branch/BranchLayout/BranchLayout'
 import BranchRoutes from './routes/BranchRoutes'
+import StoreDashboardLayout from './pages/store/Dashboard/StoreDashboardLayout'
+import StoreRoutes from './routes/StoreRoutes'
 function App() {
 
   return (
@@ -15,8 +17,8 @@ function App() {
 
       <Routes>
         {/* <Route path="/cashier/*" element={<CashierRoutes />} /> */}
-        <Route path="/" element={<Navigate to={"/branch"} />} />
-        <Route path="/branch/*" element={<BranchRoutes />} />
+        <Route path="/" element={<Navigate to="/store" />} />
+        <Route path="/store/*" element={<StoreRoutes />} />
       </Routes>
     </>
   );

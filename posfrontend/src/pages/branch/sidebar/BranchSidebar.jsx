@@ -14,56 +14,12 @@ import { Cross } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router';
 
-const navItems = [
-    {
-        name: "Dashboard",
-        path: "/branch/dashboard",
-        icon: <LayoutDashboard className="w-5 h-5" />,
-    },
-    {
-        name: "Orders",
-        path: "/branch/orders",
-        icon: <ShoppingBag className="w-5 h-5" />,
-    },
-    {
-        name: "Transactions",
-        path: "/branch/transactions",
-        icon: <CreditCard className="w-5 h-5" />,
-    },
-    {
-        name: "Inventory",
-        path: "/branch/inventory",
-        icon: <CreditCard className="w-5 h-5" />,
-    },
-    {
-        name: "Employees",
-        path: "/branch/employees",
-        icon: <Users className="w-5 h-5" />,
-    },
-    {
-        name: "Customers",
-        path: "/branch/customers",
-        icon: <UserCircle className="w-5 h-5" />,
-    },
-    {
-        name: "Reports",
-        path: "/branch/reports",
-        icon: <FileText className="w-5 h-5" />,
-    },
-    {
-        name: "Settings",
-        path: "/branch/settings",
-        icon: <Settings className="w-5 h-5" />,
-    },
-];
-
-const branch = {
-    name: "ラーメン店",
-    address: "新宿三丁目"
-}
 
 
-const BranchSidebar = () => {
+
+
+
+const BranchSidebar = ({ branch, navItems }) => {
     return (
         <div className="w-64 border-r border-border bg-sidebar p-4 flex flex-col h-full relative">
             <div className="flex justify-center">
@@ -74,7 +30,7 @@ const BranchSidebar = () => {
             </div>
 
             {branch && (
-                <div className="my-6 px-4 py-3 bg-sidebar-accent rounded-lg">
+                <div className="mt-6 px-4 py-3 bg-sidebar-accent rounded-lg">
                     <h3 className="font-medium text-sidebar-accent-foreground">
                         {branch.name}
                     </h3>
@@ -84,7 +40,7 @@ const BranchSidebar = () => {
                 </div>
             )}
 
-            <nav className="space-y-2 flex-1">
+            <nav className="space-y-1 flex-1 mt-6">
                 {navItems.map((item) => <Link
                     className={`flex items-center justify-between p-3 rounded-md
                     hover:bg-sidebar-accent transition-colors
