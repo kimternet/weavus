@@ -1,4 +1,5 @@
 import Branches from '@/pages/store/Branch/Branches'
+import Categories from '@/pages/store/Category/Categories'
 import StoreDashboard from '@/pages/store/Dashboard/StoreDashboard'
 import StoreDashboardLayout from '@/pages/store/Dashboard/StoreDashboardLayout'
 import Products from '@/pages/store/Product/Products'
@@ -14,7 +15,7 @@ const StoreRoutes = () => {
                 <Route path="branches" element={<Branches />} />
                 <Route path="stores" element={<Branches />} />
                 <Route path="products" element={<Products />} />
-                <Route path="categories" element={<Branches />} />
+                <Route path="categories" element={<Categories />} />
                 <Route path="employees" element={<Branches />} />
                 <Route path="alerts" element={<Branches />} />
                 <Route path="sales" element={<Branches />} />
