@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import EmployeeForm from '@/pages/store/employee/EmployeeForm'
 import { Plus } from 'lucide-react'
 import React from 'react'
-
+import EmployeeForm from './EmployeeForm'
+import { Edit } from 'lucide-react'
 
 const roles = [
     "BRANCH_ADMIN",
@@ -11,25 +11,24 @@ const roles = [
     "BRANCH_MANAGER"
 ]
 
-const AddEmployeeDialog = () => {
+const EditEmployeeDialog = ({ selectedEmployee, handleOpenEditDialog }) => {
     return (
         <Dialog>
 
             <DialogTrigger asChild>
-                <Button className={""}>
-                    <Plus />
-                    店員追加
+                <Button onClick={handleOpenEditDialog} variant={"outline"} className={""}>
+                    <Edit />
                 </Button>
             </DialogTrigger>
 
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>店員新規追加</DialogTitle>
+                    <DialogTitle>Edit Employee</DialogTitle>
                 </DialogHeader>
-                <EmployeeForm roles={roles} />
+                <EmployeeForm roles={roles} initialDate={selectedEmployee} />
             </DialogContent>
         </Dialog>
     );
 };
 
-export default AddEmployeeDialog;
+export default EditEmployeeDialog;

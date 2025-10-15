@@ -1,5 +1,7 @@
 import React from 'react'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Button } from '@/components/ui/button';
+import { Edit } from 'lucide-react';
 import EditEmployeeDialog from './EditEmployeeDialog';
 import { useState } from 'react';
 
@@ -21,11 +23,10 @@ const EmployeeTable = () => {
             <TableHeader>
                 <TableRow>
                     <TableHead className="">名前</TableHead>
+                    <TableHead className="">Contact</TableHead>
                     <TableHead className="">Role</TableHead>
-                    <TableHead className="">Email</TableHead>
-                    <TableHead className="">Login Access</TableHead>
-                    <TableHead className="">Assign Since</TableHead>
-                    <TableHead className="">Status</TableHead>
+
+                    <TableHead className="">Branch</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
@@ -36,8 +37,7 @@ const EmployeeTable = () => {
                         <TableCell>{order.createdAt}</TableCell>
                         <TableCell>{order.fullName}</TableCell>
                         <TableCell>{order.cashierId}</TableCell>
-                        <TableCell>{order.totalAmount}</TableCell>
-                        <TableCell>{order.paymentType}</TableCell>
+
 
                         <TableCell className="text-right">
                             <EditEmployeeDialog handleOpenEditDialog={handleOpenEditDialog}
