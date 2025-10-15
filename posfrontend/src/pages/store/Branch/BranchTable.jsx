@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Printer } from 'lucide-react'
-import { EyeIcon } from 'lucide-react'
+import { Trash } from 'lucide-react'
+import { Edit } from 'lucide-react'
 import React from 'react'
 
 const orders = [
@@ -30,19 +30,17 @@ const orders = [
     }
 ]
 
-const OrderTable = ({ handleViewOrderDetails }) => {
+const BranchTable = ({ onEdit }) => {
     return (
         <div>
             <h2 className="text-2xl font-bold mb-4">最近のオーダー</h2>
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="">オーダーID</TableHead>
-                        <TableHead className="">時間</TableHead>
-                        <TableHead className="">お客様</TableHead>
-                        <TableHead className="">Amount</TableHead>
-                        <TableHead className="">支払い</TableHead>
-                        <TableHead className="">Status</TableHead>
+                        <TableHead className="">Branch Name</TableHead>
+                        <TableHead className="">Address</TableHead>
+                        <TableHead className="">Manager</TableHead>
+                        <TableHead className="">Phone</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -53,19 +51,26 @@ const OrderTable = ({ handleViewOrderDetails }) => {
                             <TableCell>{order.createdAt}</TableCell>
                             <TableCell>{order.customer?.fullName}</TableCell>
                             <TableCell>{order.totalAmount}</TableCell>
-                            <TableCell>{order.paymentType}</TableCell>
-                            <TableCell>{order.status}</TableCell>
                             <TableCell className="text-right">
-                                <div className="flex justify-end gap-2">
-                                    <Button onClick={
-                                        () => handleViewOrderDetails(order)
-                                    } variant={"ghost"} size={"icon"}>
-                                        <EyeIcon className="h-4 w-4" />
+
+                                <div className="flex gap-2 items-center justify-end">
+                                    <Button variant={"outline"}
+                                        onClick={
+                                            () => onEdit(order)
+                                        }
+                                    >
+                                        <Edit />
                                     </Button>
-                                    <Button variant={"ghost"} size={"icon"}>
-                                        <Printer className="h-4 w-4" />
+
+                                    <Button variant={"outline"}
+                                        onClick={
+                                            () => () => onEdit(order)
+                                        }
+                                    >
+                                        <Trash />
                                     </Button>
                                 </div>
+
                             </TableCell>
                         </TableRow>
                     ))}
@@ -75,4 +80,4 @@ const OrderTable = ({ handleViewOrderDetails }) => {
     );
 };
 
-export default OrderTable;
+export default BranchTable;

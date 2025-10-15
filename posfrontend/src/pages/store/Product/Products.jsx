@@ -1,13 +1,14 @@
 import React from 'react'
-import BranchForm from './BranchForm';
+
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import BranchTable from './BranchTable';
+import ProductForm from './ProductForm';
+import ProductTable from './ProductTable';
 
-const Branches = () => {
+const Products = () => {
 
     const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
@@ -18,20 +19,23 @@ const Branches = () => {
             <div className="flex justify-between items-center">
                 <h1 className="font-bold text-2xl">Branch Management</h1>
                 <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-                    <DialogTrigger>
-                        <Button><Plus />ブランチ追加</Button>
+                    <DialogTrigger asChild>
+                        <Button><Plus />商品追加</Button>
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle>ブランチ追加</DialogTitle>
+                            <DialogTitle>商品追加</DialogTitle>
                         </DialogHeader>
-                        <BranchForm onCancel={() => setIsAddDialogOpen(false)} />
+                        <div>
+                            <ProductForm onCancel={() => setIsAddDialogOpen(false)} />
+                        </div>
+
                     </DialogContent>
                 </Dialog>
             </div>
             <Card>
                 <CardContent>
-                    <BranchTable onEdit={() => setIsEditDialogOpen(true)} />
+                    <ProductTable onEdit={() => setIsEditDialogOpen(true)} />
                 </CardContent>
             </Card>
 
@@ -39,9 +43,12 @@ const Branches = () => {
 
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Edit Branch</DialogTitle>
+                        <DialogTitle>Edit Product</DialogTitle>
                     </DialogHeader>
-                    <BranchForm isEditing={true} onCancel={() => setIsEditDialogOpen(false)} />
+                    <div>
+                        <ProductForm isEditing={true} onCancel={() => setIsEditDialogOpen(false)} />
+                    </div>
+
                 </DialogContent>
             </Dialog>
         </div>
@@ -49,4 +56,4 @@ const Branches = () => {
     );
 };
 
-export default Branches;
+export default Products;

@@ -1,6 +1,7 @@
 import Branches from '@/pages/store/Branch/Branches'
 import StoreDashboard from '@/pages/store/Dashboard/StoreDashboard'
 import StoreDashboardLayout from '@/pages/store/Dashboard/StoreDashboardLayout'
+import Products from '@/pages/store/Product/Products'
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
@@ -12,7 +13,7 @@ const StoreRoutes = () => {
                 <Route path="dashboard" element={<StoreDashboard />} />
                 <Route path="branches" element={<Branches />} />
                 <Route path="stores" element={<Branches />} />
-                <Route path="products" element={<Branches />} />
+                <Route path="products" element={<Products />} />
                 <Route path="categories" element={<Branches />} />
                 <Route path="employees" element={<Branches />} />
                 <Route path="alerts" element={<Branches />} />
