@@ -5,6 +5,7 @@ import StoreDashboardLayout from '@/pages/store/Dashboard/StoreDashboardLayout'
 import StoreEmployee from '@/pages/store/employee/StoreEmployee'
 import Products from '@/pages/store/Product/Products'
 import StoreInfo from '@/pages/store/storeInfo/StoreInfo'
+import Upgrade from '@/pages/store/upgrade/upgrade'
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
@@ -22,7 +23,7 @@ const StoreRoutes = () => {
                 <Route path="alerts" element={<Branches />} />
                 <Route path="sales" element={<Branches />} />
                 <Route path="reports" element={<Branches />} />
-                <Route path="upgrade" element={<Branches />} />
+                <Route path="upgrade" element={<Upgrade />} />
                 <Route path="settings" element={<StoreInfo />} />
 
             </Route>

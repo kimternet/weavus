@@ -17,7 +17,7 @@ const Products = () => {
         <div className="space-y-6">
 
             <div className="flex justify-between items-center">
-                <h1 className="font-bold text-2xl">Branch Management</h1>
+                <h1 className="font-bold text-2xl">Product Management</h1>
                 <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                     <DialogTrigger asChild>
                         <Button><Plus />商品追加</Button>
