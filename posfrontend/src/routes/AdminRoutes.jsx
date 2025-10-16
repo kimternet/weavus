@@ -1,6 +1,6 @@
-import AdminDashboard from '@/pages/superAdmin/AdminDashboard'
 import AdminLayout from '@/pages/superAdmin/AdminLayout'
 import AdminSettings from '@/pages/superAdmin/AdminSettings'
+import AdminDashboard from '@/pages/superAdmin/Dashboard/AdminDashboard'
 import PendingRequest from '@/pages/superAdmin/PendingRequest'
 import StoreList from '@/pages/superAdmin/StoreList'
 import Subscriptions from '@/pages/superAdmin/Subscriptions'
