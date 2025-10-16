@@ -3,7 +3,7 @@ import AdminSettings from '@/pages/superAdmin/AdminSettings'
 import AdminDashboard from '@/pages/superAdmin/Dashboard/AdminDashboard'
 import PendingRequest from '@/pages/superAdmin/PendingRequest'
 import StoreList from '@/pages/superAdmin/StoreList'
-import Subscriptions from '@/pages/superAdmin/Subscriptions'
+import Subscriptions from '@/pages/superAdmin/Subscription/Subscriptions'
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
