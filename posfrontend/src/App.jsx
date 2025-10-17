@@ -12,6 +12,7 @@ import StoreDashboardLayout from './pages/store/Dashboard/StoreDashboardLayout'
 import StoreRoutes from './routes/StoreRoutes'
 import AdminLayout from './pages/superAdmin/AdminLayout'
 import AdminRoutes from './routes/AdminRoutes'
+import Login from './pages/Auth/Login'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/store/*" element={<StoreRoutes />} />
         <Route path="/branch/*" element={<BranchRoutes />} />
         <Route path="/super-admin/*" element={<AdminRoutes />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
