@@ -1,5 +1,5 @@
-import createSlice from "@reduxjs/toolkit";
-import getUserProfile, { getAllCashier, getAllCustomer, getUserById, logout } from "./userThunk";
+import { createSlice } from "@reduxjs/toolkit";
+import { getUserProfile, getAllCashier, getAllCustomer, getUserById, logout } from "./userThunk";
 
 const initialState = {
     userProfile: null,
