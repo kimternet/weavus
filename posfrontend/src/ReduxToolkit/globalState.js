@@ -5,6 +5,7 @@ import customerReducer from "./features/Customer/customerSlice.js"
 import orderReducer from "./features/Order/orderSlice.js"
 import refundReducer from "./features/Order/orderSlice.js"
 import shiftReportReducer from "./features/ShiftReport/shiftReportSlice.js"
+import branchReducer from "./features/Branch/branchSlice.js"
 
 const globalState = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ const globalState = configureStore({
         order: orderReducer,
         refund: refundReducer,
         shiftReport: shiftReportReducer,
+        branch: branchReducer,
     },
 });
 
