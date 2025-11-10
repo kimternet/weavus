@@ -8,6 +8,7 @@ import shiftReportReducer from "./features/ShiftReport/shiftReportSlice.js"
 import branchReducer from "./features/Branch/branchSlice.js"
 import categoryReducer from "./features/Category/categorySlice.js"
 import employeeReducer from "./features/Employee/employeeSlice.js"
+import storeReducer from "./features/Store/storeSlice.js"
 
 const globalState = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ const globalState = configureStore({
         branch: branchReducer,
         category: categoryReducer,
         employee: employeeReducer,
+        store: storeReducer,
     },
 });
 
