@@ -2,7 +2,7 @@ import api from "@/utill/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const signup = createAsyncThunk("auth/signup",
-    async (useActionData, { rejectWithValue }) => {
+    async (userData, { rejectWithValue }) => {
         try {
             const res = await api.post("/auth/signup", userData)
             localStorage.setItem("jwt", res.data.data.jwt)
@@ -16,7 +16,7 @@ export const signup = createAsyncThunk("auth/signup",
 );
 
 
-export const login = createAsyncThunk("auth/signup",
+export const login = createAsyncThunk("auth/login",
     async (loginData, { rejectWithValue }) => {
         try {
             const res = await api.post("/auth/login", loginData)
@@ -25,7 +25,7 @@ export const login = createAsyncThunk("auth/signup",
             return res.data
         } catch (error) {
             console.log("login error", error)
-            return rejectWithValue(error.response?.data?.message || "signup failed");
+            return rejectWithValue(error.response?.data?.message || "login failed");
         }
     }
 );
