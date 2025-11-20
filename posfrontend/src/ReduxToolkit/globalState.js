@@ -11,6 +11,7 @@ import employeeReducer from "./features/Employee/employeeSlice.js"
 import storeReducer from "./features/Store/storeSlice.js"
 import productReducer from "./features/Product/productSlice.js"
 import inventoryReducer from "./features/Inventory/inventorySlice.js"
+import branchAnalyticsReducer from "./features/BranchAnalytics/branchAnalyticsSlice.js"
 
 const globalState = configureStore({
     reducer: {
@@ -27,6 +28,7 @@ const globalState = configureStore({
         store: storeReducer,
         product: productReducer,
         inventory: inventoryReducer,
+        branchAnalytics: branchAnalyticsReducer,
     },
 });
 
