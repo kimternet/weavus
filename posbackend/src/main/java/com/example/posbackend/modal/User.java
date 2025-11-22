@@ -2,6 +2,8 @@ package com.example.posbackend.modal;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,11 +41,13 @@ public class User {
 	@Column(nullable = false, unique = true)
 	@Email(message = "Email should be valid")
 	private String email;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	private Store store;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Branch branch;
 	
 	private String phone;
