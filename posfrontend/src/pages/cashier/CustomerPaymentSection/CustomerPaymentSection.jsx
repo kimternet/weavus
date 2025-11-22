@@ -4,9 +4,20 @@ import DiscountSection from './DiscountSection'
 import PaymentSection from './PaymentSection'
 import NoteSection from './NoteSection'
 
+// const CustomerPaymentSection = () => {
+//     return (
+//         <div className='w-1/5 flex flex-col bg-card'>
+//             <CustomerSection />
+//             <DiscountSection />
+//             <NoteSection />
+//             <PaymentSection />
+//         </div>
+//     )
+// }
+
 const CustomerPaymentSection = () => {
     return (
-        <div className='w-1/5 flex flex-col bg-card'>
+        <div className='w-80 flex flex-col bg-card'>  {/* w-1/5 → w-80 (320px) */}
             <CustomerSection />
             <DiscountSection />
             <NoteSection />
@@ -14,5 +25,4 @@ const CustomerPaymentSection = () => {
         </div>
     )
 }
-
 export default CustomerPaymentSection

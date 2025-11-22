@@ -20,7 +20,8 @@ function App() {
 
       <Routes>
         {/* <Route path="/cashier/*" element={<CashierRoutes />} /> */}
-        <Route path="/" element={<Navigate to="/store" />} />
+        <Route path="/" element={<Navigate to="/Login" />} />
+        <Route path="/cashier/*" element={<CashierRoutes />} />
         <Route path="/store/*" element={<StoreRoutes />} />
         <Route path="/branch/*" element={<BranchRoutes />} />
         <Route path="/super-admin/*" element={<AdminRoutes />} />

@@ -3,13 +3,20 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { login } from '@/ReduxToolkit/features/Auth/authThunk';
+import { getUserProfile } from '@/ReduxToolkit/features/User/userThunk';
 import { ShoppingCart } from 'lucide-react'
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { toast } from 'sonner';
 
 const Login = () => {
 
     const [forgotPasswordEmail, setForgotPasswordEmail] = useState("")
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -17,9 +24,29 @@ const Login = () => {
     });
 
     const [showForgotPassword, setShowForgotPassword] = useState(false);
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("login...", formData)
+        console.log("login...", formData);
+
+        const resultAction = await dispatch(login(formData))
+        if (login.fulfilled.match(resultAction)) {
+            toast("ログイン生成！！");
+            const user = resultAction.payload.user
+            console.log("user", user)
+            dispatch(getUserProfile(resultAction.payload.jwt))
+
+            const userRole = user.role;
+            if (userRole == "ROLE_BRANCH_CASHIER") {
+                navigate("/cashier")
+            } else if (userRole == "ROLE_STORE_MANAGER" || userRole == "ROLE_STORE_ADMIN") {
+                navigate("/store")
+            } else if (userRole == "ROLE_BRANCH_MANAGER") {
+                navigate("/branch")
+            } else if (userRole == "ROLE_ADMIN") {
+                navigate("/super-admin")
+            }
+            console.log("user", user);
+        }
     };
 
     const handleInputChange = (e) => {
@@ -62,10 +89,10 @@ const Login = () => {
 
                         <form className="space-y-5" onSubmit={handleLogin}>
                             <div className="space-y-3">
-                                <Label>Email Address</Label>
+                                <Label>メールアドレス</Label>
                                 <Input
                                     onChange={handleInputChange}
-                                    placeholder="Enter your email.."
+                                    placeholder="メールアドレスを入力"
                                     type="email"
                                     id="email"
                                     name="email"
@@ -74,10 +101,10 @@ const Login = () => {
                             </div>
 
                             <div className="space-y-3">
-                                <Label>Password</Label>
+                                <Label>パスワード</Label>
                                 <Input
                                     onChange={handleInputChange}
-                                    placeholder="Enter your password.."
+                                    placeholder="パスワードを入力"
                                     type="password"
                                     id="password"
                                     name="password"
@@ -110,9 +137,9 @@ const Login = () => {
 
                         <div className="mt-6 p-4 bg-muted rounded-lg">
                             <p className="text-sm text-muted-foreground text-center">
-                                <strong>Demo Account : </strong><br />
-                                Email: demo@pospro.com<br />
-                                Password: demo123
+                                <strong>アカウント : </strong><br />
+                                Email: test@weavus.com<br />
+                                Password: 1234
                             </p>
                         </div>
                     </div>
@@ -125,10 +152,10 @@ const Login = () => {
                                 <Label>Email Address</Label>
                                 <Input
                                     onChange={(e) => setForgotPasswordEmail(e.target.value)}
-                                    placeholder="Enter your email.."
+                                    placeholder="メールアドレスを入力"
                                     type="email"
                                     id="email"
-                                    name="forgotPasswordemail"
+                                    name="forgotPasswordEmail"
                                     value={forgotPasswordEmail}
                                 />
                             </div>
