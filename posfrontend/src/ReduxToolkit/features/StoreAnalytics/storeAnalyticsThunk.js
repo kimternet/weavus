@@ -157,7 +157,7 @@ export const getBranchPerformance = createAsyncThunk(
 )
 
 export const getStoreAlerts = createAsyncThunk(
-    "storeAnalytics/getDailySales",
+    "storeAnalytics/getStoreAlert",
     async (id, { rejectWithValue }) => {
         try {
             const headers = getAuthHeaders()
