@@ -13,7 +13,20 @@ import StoreRoutes from './routes/StoreRoutes'
 import AdminLayout from './pages/superAdmin/AdminLayout'
 import AdminRoutes from './routes/AdminRoutes'
 import Login from './pages/Auth/Login'
+import { useDispatch } from 'react-redux'
+import { getUserProfile } from './ReduxToolkit/features/User/userThunk'
+import { useEffect } from 'react'
+
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {  // ✅ JWT가 있을 때만 호출
+      dispatch(getUserProfile(jwt))
+    }
+  }, [dispatch])  // ✅ dependency array 추가
 
   return (
     <>
