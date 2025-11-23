@@ -5,7 +5,6 @@ import { Store } from 'lucide-react';
 import { CheckCircle } from 'lucide-react'
 import React from 'react'
 
-
 const plans = [
     { id: 1, description: "Basic plan for small store", name: "Basic", price: 99, billingCycle: "monthly", extraFeatures: ["Api Integration", "Advance Reporting"] },
     { id: 2, description: "Basic plan for small store", name: "Pro", price: 199, billingCycle: "monthly", extraFeatures: ["Api Integration", "Advance Reporting"] },
