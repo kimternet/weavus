@@ -5,7 +5,7 @@ import StoreDashboardLayout from '@/pages/store/Dashboard/StoreDashboardLayout'
 import StoreEmployee from '@/pages/store/employee/StoreEmployee'
 import Products from '@/pages/store/Product/Products'
 import StoreInfo from '@/pages/store/storeInfo/StoreInfo'
-import Upgrade from '@/pages/store/upgrade/upgrade'
+import Upgrade from "@/pages/store/upgrade/Upgrade";
 import React from 'react'
 import { Route, Routes } from 'react-router'
 
