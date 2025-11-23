@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import React from 'react'
 import { useState } from 'react'
-import InventoryFormDialog from './InventoryformDialog';
 import InventoryTable from './InventoryTable';
+import InventoryFormDialog from './InventoryFormDialog';
 
 const Inventory = () => {
 
